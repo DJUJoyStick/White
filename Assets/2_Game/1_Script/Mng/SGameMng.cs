@@ -24,6 +24,8 @@ public class SGameMng : MonoBehaviour
 
 	public UnityEngine.UI.Text testLog;
 
+    public Player PlayerSc;
+
 	public void log(string msg)
 	{
 		testLog.text += msg + "\n";
