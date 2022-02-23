@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     SpriteRenderer PlayerSr;
     Rigidbody2D PlayerRig;
 
+    PLAYERDIRECT Direction;
+
     float fMoveSpeed;
     float fJumpPower;
 
@@ -31,17 +33,32 @@ public class Player : MonoBehaviour
 
     void State()
     {
-        if (Input.GetKey(KeyCode.LeftArrow)){
+        if (Input.GetKey(KeyCode.LeftArrow) && bJumpAccess)
+        {
             PlayerSr.flipX = false;
+            Direction = PLAYERDIRECT.LEFT;
         }
-        else if (Input.GetKey(KeyCode.RightArrow)){
+        else if (Input.GetKey(KeyCode.RightArrow) && bJumpAccess)
+        {
             PlayerSr.flipX = true;
+            Direction = PLAYERDIRECT.RIGHT;
         }
     }
 
     void Move()
     {
         float h = Input.GetAxisRaw("Horizontal");
+
+        if (!bJumpAccess)
+        {
+            if (Direction.Equals(PLAYERDIRECT.NONE))
+                h = 0;
+            else if (Direction.Equals(PLAYERDIRECT.LEFT))
+                h = -1;
+            else if (Direction.Equals(PLAYERDIRECT.RIGHT))
+                h = 1;
+        }
+
         PlayerRig.AddForce(Vector2.right * h, ForceMode2D.Impulse);
 
         if (PlayerRig.velocity.x > fMoveSpeed)
@@ -56,15 +73,13 @@ public class Player : MonoBehaviour
         if (Input.GetButtonUp("Horizontal"))
         {
             PlayerRig.velocity = new Vector2(PlayerRig.velocity.normalized.x * 0.5f, PlayerRig.velocity.y);
+            Direction = PLAYERDIRECT.NONE;
         }
-
 
         if (bJumpAccess && Input.GetKeyDown(KeyCode.Space))
         {
-            bJumpAccess = false;
             PlayerRig.AddForce(Vector2.up * fJumpPower, ForceMode2D.Impulse);
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -72,6 +87,14 @@ public class Player : MonoBehaviour
         if (col.transform.CompareTag("floor"))
         {
             bJumpAccess = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.transform.CompareTag("floor"))
+        {
+            bJumpAccess = false;
         }
     }
 
