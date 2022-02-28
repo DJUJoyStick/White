@@ -38,8 +38,6 @@ public class SGameMng : MonoBehaviour
 
 	public void Raycast()
 	{
-		//if (bIsSelecting)
-			//return;
 		Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 		Ray2D ray = new Ray2D(pos, Vector2.zero);
@@ -56,7 +54,7 @@ public class SGameMng : MonoBehaviour
 			}
 		}
 	}
-	// 72~75 빌드후 괜찮나 확인
+
 	public void DropItem()
 	{
 		if (bIsSelecting)
