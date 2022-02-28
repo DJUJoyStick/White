@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     float fMoveSpeed;
     float fJumpPower;
 
+    public bool bPlayerDie;
     public bool bJumpAccess;
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
         PlayerRig = GetComponent<Rigidbody2D>();
         fMoveSpeed = 5.0f;
         fJumpPower = 7.0f;
+        bPlayerDie = false;
         bJumpAccess = true;
     }
 
@@ -33,6 +35,21 @@ public class Player : MonoBehaviour
 
     void State()
     {
+        if(!bPlayerDie)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                SGameMng.I.Raycast();
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (SGameMng.I.bIsSelecting)
+                {
+                    SGameMng.I.DropItem();
+                }
+            }
+        }
+
         if (Input.GetKey(KeyCode.LeftArrow) && bJumpAccess)
         {
             PlayerSr.flipX = false;
