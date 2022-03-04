@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         PlayerSr = GetComponent<SpriteRenderer>();
         PlayerRig = GetComponent<Rigidbody2D>();
         fMoveSpeed = 5.0f;
-        fJumpPower = 7.0f;
+        fJumpPower = 10.0f;
         bPlayerDie = false;
         bJumpAccess = true;
     }
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 
     void State()
     {
-        if(!bPlayerDie)
+        if (!bPlayerDie)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -50,15 +50,17 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow) && bJumpAccess)
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             PlayerSr.flipX = false;
-            Direction = PLAYERDIRECT.LEFT;
+            if (bJumpAccess)
+                Direction = PLAYERDIRECT.LEFT;
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && bJumpAccess)
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             PlayerSr.flipX = true;
-            Direction = PLAYERDIRECT.RIGHT;
+            if (bJumpAccess)
+                Direction = PLAYERDIRECT.RIGHT;
         }
     }
 
