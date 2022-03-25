@@ -14,7 +14,7 @@ public class CamFollow : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 TargetPos = new Vector3(SGameMng.I.PlayerSc.transform.position.x, SGameMng.I.PlayerSc.transform.position.y, -10f);
+        Vector3 TargetPos = new Vector3(SGameMng.I.PlayerSc.transform.position.x, SGameMng.I.PlayerSc.transform.position.y + 3.5f, -10f);
         transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * fCamSpeed);
     }
 }

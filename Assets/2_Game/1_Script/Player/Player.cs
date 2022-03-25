@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject WaveGams;
+
     SpriteRenderer PlayerSr;
     Rigidbody2D PlayerRig;
 
@@ -29,14 +31,23 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        State();
-        Move();
+        if (!SGameMng.I.bTimePause)
+        {
+            State();
+            Move();
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+            SGameMng.I.PauseGame(true, 0.0f);
+        if (Input.GetKeyDown(KeyCode.O))
+            SGameMng.I.PauseGame(false, 1.0f);
     }
 
     void State()
     {
         if (!bPlayerDie)
         {
+            Skill();
+
             if (Input.GetMouseButtonDown(0))
             {
                 SGameMng.I.Raycast();
@@ -98,6 +109,14 @@ public class Player : MonoBehaviour
         if (bJumpAccess && Input.GetKeyDown(KeyCode.Space))
         {
             PlayerRig.AddForce(Vector2.up * fJumpPower, ForceMode2D.Impulse);
+        }
+    }
+
+    void Skill()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Instantiate(WaveGams, transform.position, Quaternion.identity);
         }
     }
 

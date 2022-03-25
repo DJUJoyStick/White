@@ -30,6 +30,7 @@ public class SGameMng : MonoBehaviour
 
 	public Item SelectItem;
 	public bool bIsSelecting;
+	public bool bTimePause;
 
 	public void log(string msg)
 	{
@@ -46,7 +47,7 @@ public class SGameMng : MonoBehaviour
 
 		if (hit.collider != null)
 		{
-			if (hit.collider.CompareTag("Object"))
+			if (hit.collider.CompareTag("Item"))
 			{
 				SelectItem = hit.collider.GetComponent<Item>();
 				SelectItem.bSelecting = true;
@@ -73,5 +74,11 @@ public class SGameMng : MonoBehaviour
 			SelectItem = null;
 		}
 	}
+
+	public void PauseGame(bool on, float scale)
+    {
+		bTimePause = on;
+		Time.timeScale = scale;
+    }
 
 }
