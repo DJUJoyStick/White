@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject WaveGams;
+
     SpriteRenderer PlayerSr;
     Rigidbody2D PlayerRig;
 
@@ -21,7 +23,7 @@ public class Player : MonoBehaviour
         PlayerSr = GetComponent<SpriteRenderer>();
         PlayerRig = GetComponent<Rigidbody2D>();
         fMoveSpeed = 5.0f;
-        fJumpPower = 7.0f;
+        fJumpPower = 10.0f;
         bPlayerDie = false;
         bJumpAccess = true;
     }
@@ -29,14 +31,23 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        State();
-        Move();
+        if (!SGameMng.I.bTimePause)
+        {
+            State();
+            Move();
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+            SGameMng.I.PauseGame(true, 0.0f);
+        if (Input.GetKeyDown(KeyCode.O))
+            SGameMng.I.PauseGame(false, 1.0f);
     }
 
     void State()
     {
-        if(!bPlayerDie)
+        if (!bPlayerDie)
         {
+            Skill();
+
             if (Input.GetMouseButtonDown(0))
             {
                 SGameMng.I.Raycast();
@@ -50,15 +61,17 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow) && bJumpAccess)
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             PlayerSr.flipX = false;
-            Direction = PLAYERDIRECT.LEFT;
+            if (bJumpAccess)
+                Direction = PLAYERDIRECT.LEFT;
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && bJumpAccess)
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             PlayerSr.flipX = true;
-            Direction = PLAYERDIRECT.RIGHT;
+            if (bJumpAccess)
+                Direction = PLAYERDIRECT.RIGHT;
         }
     }
 
@@ -96,6 +109,14 @@ public class Player : MonoBehaviour
         if (bJumpAccess && Input.GetKeyDown(KeyCode.Space))
         {
             PlayerRig.AddForce(Vector2.up * fJumpPower, ForceMode2D.Impulse);
+        }
+    }
+
+    void Skill()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Instantiate(WaveGams, transform.position, Quaternion.identity);
         }
     }
 

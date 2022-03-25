@@ -5,11 +5,13 @@ using UnityEngine;
 public class Floor : MonoBehaviour
 {
     BoxCollider2D FloorBc;
+    public float fJudgment;
 
     // Start is called before the first frame update
     void Start()
     {
         FloorBc = GetComponent<BoxCollider2D>();
+        fJudgment = 0.55f;
     }
 
     // Update is called once per frame
@@ -20,7 +22,7 @@ public class Floor : MonoBehaviour
 
     void CollisionOnOff()
     {
-        if (SGameMng.I.PlayerSc.transform.position.y - 0.5f > transform.position.y)
+        if (SGameMng.I.PlayerSc.transform.position.y - fJudgment > transform.position.y)
             FloorBc.enabled = true;
         else
             FloorBc.enabled = false;
