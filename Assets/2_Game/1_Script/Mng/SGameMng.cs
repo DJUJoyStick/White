@@ -24,11 +24,14 @@ public class SGameMng : MonoBehaviour
 
 	public UnityEngine.UI.Text testLog;
 
+	public GameObject SettingGams;
+
     public Player PlayerSc;
 
 	public RaycastHit2D hit;
 
 	public Item SelectItem;
+
 	public bool bIsSelecting;
 	public bool bTimePause;
 
@@ -75,10 +78,19 @@ public class SGameMng : MonoBehaviour
 		}
 	}
 
-	public void PauseGame(bool on, float scale)
-    {
-		bTimePause = on;
-		Time.timeScale = scale;
-    }
-
+	public void PauseGame()
+	{
+		if (!bTimePause)
+		{
+			bTimePause = true;
+			SettingGams.SetActive(true);
+			Time.timeScale = 0.0f;
+		}
+        else
+        {
+			bTimePause = false;
+			SettingGams.SetActive(false);
+			Time.timeScale = 1.0f;
+        }
+	}
 }

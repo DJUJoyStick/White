@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         fMoveSpeed = 5.0f;
         fJumpPower = 10.0f;
         bPlayerDie = false;
-        bJumpAccess = true;
+        bJumpAccess = false;
     }
 
     // Update is called once per frame
@@ -36,10 +36,8 @@ public class Player : MonoBehaviour
             State();
             Move();
         }
-        if (Input.GetKeyDown(KeyCode.I))
-            SGameMng.I.PauseGame(true, 0.0f);
-        if (Input.GetKeyDown(KeyCode.O))
-            SGameMng.I.PauseGame(false, 1.0f);
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SGameMng.I.PauseGame();
     }
 
     void State()
@@ -135,5 +133,4 @@ public class Player : MonoBehaviour
             bJumpAccess = false;
         }
     }
-
 }
