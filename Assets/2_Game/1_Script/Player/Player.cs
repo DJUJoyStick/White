@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
             State();
             Move();
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !SGameMng.I.bMinGame)
             SGameMng.I.PauseGame();
     }
 

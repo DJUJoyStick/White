@@ -25,6 +25,9 @@ public class SGameMng : MonoBehaviour
 	public UnityEngine.UI.Text testLog;
 
 	public GameObject SettingGams;
+	public GameObject[] MiniGamPre;
+
+	public Transform CanvasTr;
 
     public Player PlayerSc;
 
@@ -34,6 +37,7 @@ public class SGameMng : MonoBehaviour
 
 	public bool bIsSelecting;
 	public bool bTimePause;
+	public bool bMinGame;
 
 	public void log(string msg)
 	{
@@ -93,4 +97,17 @@ public class SGameMng : MonoBehaviour
 			Time.timeScale = 1.0f;
         }
 	}
+
+	public void MiniGame(int kind)
+    {
+		bMinGame = true;
+		if(kind == 1)
+        {
+			Instantiate(MiniGamPre[kind - 1], CanvasTr);
+        }
+		else if(kind == 2)
+        {
+
+        }
+    }
 }
