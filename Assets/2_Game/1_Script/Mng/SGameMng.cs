@@ -101,13 +101,13 @@ public class SGameMng : MonoBehaviour
 	public void MiniGame(int kind)
     {
 		bMinGame = true;
-		if(kind == 1)
+		if(kind.Equals(1))
         {
 			Instantiate(MiniGamPre[kind - 1], CanvasTr);
         }
-		else if(kind == 2)
+		else if(kind.Equals(2))
         {
-
-        }
+			Instantiate(MiniGamPre[kind - 1], CanvasTr);
+		}
     }
 }
