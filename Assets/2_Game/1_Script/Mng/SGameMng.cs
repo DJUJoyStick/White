@@ -26,8 +26,7 @@ public class SGameMng : MonoBehaviour
 
 	public GameObject SettingGams;
 	public GameObject[] MiniGamPre;
-
-	public Transform CanvasTr;
+	public GameObject MiniGams;
 
     public Player PlayerSc;
 
@@ -97,17 +96,4 @@ public class SGameMng : MonoBehaviour
 			Time.timeScale = 1.0f;
         }
 	}
-
-	public void MiniGame(int kind)
-    {
-		bMinGame = true;
-		if(kind.Equals(1))
-        {
-			Instantiate(MiniGamPre[kind - 1], CanvasTr);
-        }
-		else if(kind.Equals(2))
-        {
-			Instantiate(MiniGamPre[kind - 1], CanvasTr);
-		}
-    }
 }
