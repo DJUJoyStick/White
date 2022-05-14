@@ -42,9 +42,6 @@ public class Tile : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //클릭했을때 행동
-        Debug.Log("Click" + Numeric);
-
         board.IsMoveTile(this);
     }
 

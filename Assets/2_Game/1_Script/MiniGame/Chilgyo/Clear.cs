@@ -11,36 +11,19 @@ public class Clear : MonoBehaviour
     public BoardShake boardShake;
     public UIController ui;
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void OnClick()
     {
         board.Correct();
         if (board.correct == false)
         {
-
-            //실패했을 때
-            Debug.Log("실패");
-            
             boardShake.VibrateBoardForTime(2.0f);
             Invoke("Delay", 2);
             
         }
         else
         {
-            
             board.IsGameOver();
             ui.OnResultPanel();
-
         }
     }
     void Delay()

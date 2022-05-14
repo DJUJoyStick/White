@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1057044822394998837}
   - component: {fileID: 1057044822394998838}
   - component: {fileID: 1057044822394998839}
-  - component: {fileID: 1057044822394998836}
+  - component: {fileID: 2341584552186063501}
   - component: {fileID: 1057044822394998833}
   m_Layer: 0
   m_Name: wave
@@ -74,15 +74,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b7bc438966b2a2847b86379d9e8e2e8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.25, y: 2.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &1057044822394998839
@@ -106,7 +106,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1057044822394998836
+--- !u!58 &2341584552186063501
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.125
 --- !u!114 &1057044822394998833
 MonoBehaviour:
   m_ObjectHideFlags: 0

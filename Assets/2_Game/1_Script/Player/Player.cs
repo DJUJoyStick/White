@@ -71,6 +71,22 @@ public class Player : MonoBehaviour
             if (bJumpAccess)
                 Direction = PLAYERDIRECT.RIGHT;
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SGameMng.I.nColorCount = 1;
+            SGameMng.I.ColorText.text = "현재 색상 : 빨간색";
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SGameMng.I.nColorCount = 2;
+            SGameMng.I.ColorText.text = "현재 색상 : 초록색";
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SGameMng.I.nColorCount = 3;
+            SGameMng.I.ColorText.text = "현재 색상 : 파란색";
+        }
     }
 
     void Move()

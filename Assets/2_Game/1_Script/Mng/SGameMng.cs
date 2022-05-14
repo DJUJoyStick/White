@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SGameMng : MonoBehaviour
 {
@@ -22,26 +23,29 @@ public class SGameMng : MonoBehaviour
 		_Instance = this;
 	}
 
-	public UnityEngine.UI.Text testLog;
-
 	public GameObject SettingGams;
 	public GameObject[] MiniGamPre;
 	public GameObject MiniGams;
 
-    public Player PlayerSc;
+	public Text testLog;
+	public Text ColorText;
+
+	public Transform CanvasTr;
+
+	public Player PlayerSc;
 
 	public RaycastHit2D hit;
 
 	public Item SelectItem;
 
+	public int nMinGameNum;
+	public int nColorCount;
+
 	public bool bIsSelecting;
 	public bool bTimePause;
 	public bool bMinGame;
 
-	public void log(string msg)
-	{
-		testLog.text += msg + "\n";
-	}
+	public void log(string msg) => testLog.text += msg + "\n";
 
 	public void Raycast()
 	{

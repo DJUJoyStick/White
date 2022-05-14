@@ -12,7 +12,6 @@ public class Puzzle : MonoBehaviour
     public GameObject Clear;
     public int count;
 
-    // Start is called before the first frame update
     void Start()
     {
         Clear.SetActive(false);
@@ -20,12 +19,6 @@ public class Puzzle : MonoBehaviour
         {
             Correct[i] = 0;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void CheckedPuzzle(int Corret_n, int piece_n)
@@ -66,9 +59,4 @@ public class Puzzle : MonoBehaviour
         Time.timeScale = 0;
         Clear.SetActive(true);
     }
-    /*void posReset()
-    {
-        
-        transform.localPosition = piece.pos;
-    }*/
 }   
