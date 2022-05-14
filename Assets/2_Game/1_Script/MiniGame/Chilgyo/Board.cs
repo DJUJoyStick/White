@@ -100,11 +100,7 @@ public class Board : MonoBehaviour
     {
         List<Tile> tiles = tileList.FindAll(x => x.IsCorrected == true);
 
-        Debug.Log("Correct Count: " + tiles.Count);
-
-        Debug.Log("GameClear");
         //게임 클리어 했을때 시간계산 중지
-        StopCoroutine("CalculatePlaytime");
         // Board 오브젝트 컴포넌트로 설정하기 때문에
         // 그리고 한번만 호출하기 때문에 변수를 만들지 않고 바로 호출
 
@@ -124,7 +120,6 @@ public class Board : MonoBehaviour
     {
         List<Tile> tiles = tileList.FindAll(x => x.IsCorrected == true);
 
-        Debug.Log("Correct Count: " + tiles.Count);
         if (tiles.Count == puzzleSize.x * puzzleSize.y - 1)
         {
             correct = true;

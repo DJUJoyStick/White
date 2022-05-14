@@ -18,7 +18,6 @@ public class CameraShake : MonoBehaviour
     private void Start()
     {
         initialPosition = new Vector3(0f, 0f, -10f);
-        
     }
 
     private void Update()

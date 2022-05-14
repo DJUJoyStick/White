@@ -23,6 +23,8 @@ public class UIController : MonoBehaviour
 
     public void OnClickRestart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Destroy(SGameMng.I.MiniGams);
+        if (SGameMng.I.nMinGameNum.Equals(2))
+            SGameMng.I.MiniGams = Instantiate(SGameMng.I.MiniGamPre[1], SGameMng.I.CanvasTr) as GameObject;
     }
 }

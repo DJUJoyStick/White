@@ -15,7 +15,7 @@ public class Move : MonoBehaviour, IDragHandler, IEndDragHandler
     private int pos_no;
 
     public Vector3 pos;
-    // Start is called before the first frame update
+
     void Start()
     {
         string[] str = gameObject.name.Split('_');
@@ -24,11 +24,6 @@ public class Move : MonoBehaviour, IDragHandler, IEndDragHandler
         puzzle.pieceArr.Add(this);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void OnDrag(PointerEventData eventData)
     {
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);

@@ -7,7 +7,6 @@ public class BoardShake : MonoBehaviour
 
     //카메라 흔들기
     public float ShakeAmount;
-    //public Canvas canvas;
     float ShakeTime;
     Vector3 initialPosition;
 
@@ -16,7 +15,6 @@ public class BoardShake : MonoBehaviour
         ShakeTime = time;
     }
 
-    
     public void VibrateBoardForTime(float time)
     {
         ShakeTime = time;
